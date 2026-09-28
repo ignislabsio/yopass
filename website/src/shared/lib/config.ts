@@ -39,6 +39,8 @@ export const defaultConfig: Config = {
   SECRET_REQUESTS: false,
   READ_RECEIPTS: false,
   ARGON2: false,
+  APP_NAME: 'Ignis Secure',
+  LOGO_URL: '/ignis-icon.svg',
 };
 
 // Type-coercion helpers for the untrusted /config response: each returns the
@@ -114,8 +116,8 @@ export function parseConfig(value: unknown): Config {
     THEME_DARK: asString(data.THEME_DARK) ?? defaultConfig.THEME_DARK,
     THEME_CUSTOM_LIGHT: asThemeVars(data.THEME_CUSTOM_LIGHT),
     THEME_CUSTOM_DARK: asThemeVars(data.THEME_CUSTOM_DARK),
-    APP_NAME: asString(data.APP_NAME),
-    LOGO_URL: asString(data.LOGO_URL),
+    APP_NAME: asString(data.APP_NAME) ?? defaultConfig.APP_NAME,
+    LOGO_URL: asString(data.LOGO_URL) ?? defaultConfig.LOGO_URL,
     PUBLIC_URL: asString(data.PUBLIC_URL),
     OIDC_ENABLED: asBool(data.OIDC_ENABLED, false),
     REQUIRE_AUTH: asBool(data.REQUIRE_AUTH, false),

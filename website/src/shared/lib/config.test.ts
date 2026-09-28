@@ -15,6 +15,19 @@ describe('parseConfig', () => {
     expect(parseConfig({})).toMatchObject(defaultConfig);
   });
 
+  it('uses Ignis branding without changing an explicitly branded server', () => {
+    expect(parseConfig({ APP_NAME: '', LOGO_URL: false })).toMatchObject({
+      APP_NAME: 'Ignis Secure',
+      LOGO_URL: '/ignis-icon.svg',
+    });
+    expect(
+      parseConfig({ APP_NAME: 'Team Vault', LOGO_URL: '/team.svg' }),
+    ).toMatchObject({
+      APP_NAME: 'Team Vault',
+      LOGO_URL: '/team.svg',
+    });
+  });
+
   it('rejects invalid optional field types and unsupported expirations', () => {
     const config = parseConfig({
       READ_ONLY: 'false',

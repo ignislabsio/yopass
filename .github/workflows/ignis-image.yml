@@ -1,9 +1,10 @@
 name: Publish Ignis Yopass image
 
+# yamllint disable-line rule:truthy
 on:
   push:
     branches: [ignis]
-  workflow_dispatch:
+  workflow_dispatch: {}
 
 permissions:
   contents: read

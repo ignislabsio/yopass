@@ -20,7 +20,9 @@ describe('parseConfig', () => {
       APP_NAME: 'Ignis Secure',
       LOGO_URL: '/ignis-icon.svg',
     });
-    expect(parseConfig({ APP_NAME: 'Team Vault', LOGO_URL: '/team.svg' })).toMatchObject({
+    expect(
+      parseConfig({ APP_NAME: 'Team Vault', LOGO_URL: '/team.svg' }),
+    ).toMatchObject({
       APP_NAME: 'Team Vault',
       LOGO_URL: '/team.svg',
     });
